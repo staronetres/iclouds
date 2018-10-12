@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Product;
+use App\Category;
 
 use Illuminate\Http\Request;
 
@@ -16,7 +17,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        return view('front.home');
+        // $this->middleware('auth');
     }
 
     /**
@@ -26,15 +28,18 @@ class HomeController extends Controller
      */
    public function index()
     {
+
+        $categories=Category::all();
         $products=Product::all();
-        return view('front.home');
+        
+        return view('front.home',compact('categories','products'));
     }
 
     public function shop()
     {
         // $Products = DB::table('products')->get();
         // return view('front.shop',compact('Products'));
-
+        $categories=Category::all();
         $products=Product::all();
 
         return view('front.shop',compact(['categories','products']));

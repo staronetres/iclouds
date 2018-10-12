@@ -3,11 +3,12 @@
 
     <!-- Product-->
 
-       @forelse($products as $product)
+    
           <section class="container padding-top-3x padding-bottom-3x">
         <h3 class="text-center mb-30">Featured Products</h3>
         <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;margin&quot;: 30, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;576&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3},&quot;991&quot;:{&quot;items&quot;:4},&quot;1200&quot;:{&quot;items&quot;:4}} }">
           <!-- Product-->
+             @forelse($products as $product)
           <div class="grid-item">
             <div class="product-card">
               <div class="product-badge text-danger">22% Off</div><a class="product-thumb" href="shop-single.html"><img src="{{url('images',$product->image)}}" alt="Product"></a>
@@ -21,9 +22,11 @@
               </div>
             </div>
           </div>
-       </section>  
-        @empty
-            <h3>No Shirts</h3>
+
+          @empty
+            <h3>No Productss</h3>
             @endforelse
+       </section>  
+        
 
 @endsection

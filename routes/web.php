@@ -16,9 +16,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('home', function (){
-    return view('front/home');
-});
+// Route::get('home', function (){
+//     return view('front/home');
+// });
 
 Route::get('/products', function (){
     return view('front/shop');
@@ -43,7 +43,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/home', 'HomeController@contact')->name('contact');
+// Route::get('/home', 'HomeController@contact')->name('contact');
 
 
 // Start of Admin
@@ -73,9 +73,9 @@ Route::get('/admin', 'AdminController@index');
 // End of Admin
 
 
-Route::get('/products', function (){
-    return view('front/shop');
-});
+// Route::get('/products', function (){
+//     return view('front/shop');
+// });
 
 
 
@@ -88,3 +88,12 @@ Route::get('/product_details/{id}', 'HomeController@product_details');
 
 
 Route::get('/cart', 'CartController@index');
+
+
+Route::get('/cart/addItem/{id}', 'HomeController@product_details');
+
+
+Route::get('/cart/addItem/{id}', 'CartController@addItem');
+
+
+Route::get('/cart/remove/{id}', 'CartController@destroy');
