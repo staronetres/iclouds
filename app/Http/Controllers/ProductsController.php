@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+use App\Category;
 use App\about;
 
 use App\Product;
@@ -35,10 +37,12 @@ class ProductsController extends Controller
 
 
 
-    public function create()
+     public function create()
     {
+        $categories=Category::pluck('name','id');
+        return view('admin.product.create',compact('categories'));
         
-        return view('admin.product.create');
+        // return view('admin.product.create');
     }
 
 

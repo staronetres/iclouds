@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+Route::get('/', 'HomeController@index')->name('home');
 
 
 // Route::get('home', function (){
@@ -65,6 +68,8 @@ Route::get('/admin', 'AdminController@index');
 
   Route::resource('product','ProductsController');
 
+  Route::resource('category','CategoriesController');
+
 Route::get('/admin', 'AdminController@index');
 
 
@@ -72,6 +77,41 @@ Route::get('/admin', 'AdminController@index');
 
 // End of Admin
 
+
+// Start of User Authentication
+  Route::group(['middleware' => 'auth'], function() {
+
+    Route::get('/checkout', 'CheckoutController@index');
+    Route::post('/formvalidate','CheckoutController@formvalidate')->name('formvalidate');
+
+
+    Route::get('/profile', function() {
+        return view('profile.index');
+    });
+
+    Route::get('/address', 'ProfileController@address');
+
+    
+    Route::post('/updateAddress', 'ProfileController@UpdateAddress');
+
+    Route::get('/password', 'ProfileController@Password');
+
+      Route::post('/updatePassword', 'ProfileController@updatePassword');
+
+
+     Route::get('/thankyou', function() {
+        return view('profile.thankyou');
+    });
+
+     Route::get('/orders', 'ProfileController@orders');
+
+
+
+
+});
+
+
+// End of User Authentication
 
 // Route::get('/products', function (){
 //     return view('front/shop');
@@ -97,3 +137,8 @@ Route::get('/cart/addItem/{id}', 'CartController@addItem');
 
 
 Route::get('/cart/remove/{id}', 'CartController@destroy');
+
+
+Route::get('/cart/update/{id}', 'CartController@update');
+
+Route::put('/cart/update/{id}', 'CartController@update');

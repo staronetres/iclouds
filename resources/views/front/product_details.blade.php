@@ -35,11 +35,11 @@
             <div class="product-gallery"><span class="product-badge text-danger">30% Off</span>
               <div class="gallery-wrapper">
               
-                <div class="gallery-item"><a href="<?php echo $product->image;?>" data-hash="two" data-size="1000x667"></a></div>
+                <div class="gallery-item"><a href="{{url('images',$product->image)}}" data-hash="two" data-size="1000x667"></a></div>
              
               </div>
               <div class="product-carousel owl-carousel">
-                <div data-hash="one"><img src="img/shop/single/01.jpg" alt="Product"></div>
+                <div data-hash="one"><img src="{{url('images',$product->image)}}" alt="Product"></div>
                 <div data-hash="two"><img src="img/shop/single/02.jpg" alt="Product"></div>
                 <div data-hash="three"><img src="img/shop/single/03.jpg" alt="Product"></div>
                 <div data-hash="four"><img src="img/shop/single/04.jpg" alt="Product"></div>
@@ -59,7 +59,7 @@
             <div class="padding-top-2x mt-2 hidden-md-up"></div>
               <div class="rating-stars"><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star"></i>
               </div><span class="text-muted align-middle">&nbsp;&nbsp;4.2 | 3 customer reviews</span>
-            <h2 class="padding-top-1x text-normal">Reebok Royal CL Jogger 2</h2><span class="h2 d-block">
+            <h2 class="padding-top-1x text-normal"><?php echo ucwords($product->pro_name);?></h2><span class="h2 d-block">
               <del class="text-muted text-normal">${{$product->pro_price}}</del>&nbsp; ${{$product->spl_price}}</span>
             <p>{{$product->pro_info}}</p>
             <div class="row margin-top-1x">
@@ -110,7 +110,7 @@
               </div>
               <div class="sp-buttons mt-2 mb-2">
                 <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
-                <button class="btn btn-primary" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!"><i class="icon-bag"></i> Add to Cart</button>
+                <button class="btn btn-primary" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!"><i class="icon-bag"></i><a href="{{url('/cart/addItem')}}/<?php echo $product->id; ?>"> Add to Cart</button>
               </div>
             </div>
           </div>

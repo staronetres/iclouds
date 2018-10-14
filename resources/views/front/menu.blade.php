@@ -301,9 +301,13 @@
             <ul class="mega-menu">
               <li><span class="mega-menu-title">Top Categories</span>
                 <ul class="sub-menu">
-                  @foreach($categories as $cat)
-                  <li><a href="{{ucwords($cat->name)}}">Men's Shoes</a></li>
-                  @endforeach
+               
+
+                   <?php  $cats = DB::table('categories')->get(); ?>
+                 @foreach($cats as $cat)
+              <a class="dropdown-item" href="{{url('/')}}/products/{{$cat->name}}">{{ucwords($cat->name)}}</a>
+
+               @endforeach
                 </ul>
               </li>
               
@@ -325,7 +329,28 @@
             <div class="account"><a href="account-orders.html"></a><i class="icon-head"></i>
               <ul class="toolbar-dropdown">
                 <li class="sub-menu-title"><span>Hello,</span> Daniel Adams</li>
-                  <li><a href="account-profile.html">My Profile</a></li>
+                 
+
+
+
+                  <?php if (Auth::check()) { ?>
+                    <li><a href="#"><i class="fa fa-user"></i>{{Auth::user()->name}}</li>
+                 <?php } ?>
+            
+                <?php if (Auth::check()) { ?>
+                    <li class="dropdown-item"><a href="{{url('/logout')}}"><i class="fa fa-lock"></i> Logout</a></li>
+                <?php } else { ?>
+                    <li class="dropdown-item"><a href="{{url('/login')}}"><i class="fa fa-lock"></i> Login</a></li>
+                <?php } ?>
+                    </li>
+
+
+
+                   <?php if (Auth::check()) { ?>
+                  <li><a href="{{url('/')}}/profile"><i class="fa fa-user"></i>{{Auth::user()->name}}</a></li>
+                   <?php } ?>
+
+
                   <li><a href="account-orders.html">Orders List</a></li>
                   <li><a href="account-wishlist.html">Wishlist</a></li>
                 <li class="sub-menu-separator"></li>
