@@ -18,7 +18,9 @@ class CreateProductsTable extends Migration
             $table->string('pro_name');
             $table->string('pro_code');
             $table->string('pro_price');
-            $table->string('pro_info');
+            // $table->string('pro_info');
+            $table->text('pro_info');
+            $table->string('text');
             $table->integer('category_id');
             $table->string('image')->nullable(); 
             $table->string('spl_price');
